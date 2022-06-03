@@ -1,1 +1,53 @@
-<p>rezervuaras works!</p>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Įveskite rezervuaro duomenis</div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="" class="form-label">Talpa: </label>
+            <input type="number" class="form-control" [(ngModel)]="talpa" />
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Pildymo greitis: </label>
+            <input type="number" class="form-control" [(ngModel)]="greitis" />
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label"
+              >Laikas, per kurį rezervuaras bus pildomas:
+            </label>
+            <input type="number" class="form-control" [(ngModel)]="laikas" />
+          </div>
+          <button
+            class="btn btn-success"
+            (click)="skaiciuotiRezervuaroUzpildymoLygi()"
+          >
+            Skaičiuoti
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Rezultatai</div>
+        <div class="card-body">
+          <div
+            class="alert"
+            *ngIf="uzpildymoLygis !== 0"
+            [ngClass]="{
+              'alert-warning': uzpildymoLygis > 80 && uzpildymoLygis < 100,
+              'alert-danger': uzpildymoLygis >= 100
+            }"
+          >
+            Rezervuaro užpildymo lygis: <strong>{{ uzpildymoLygis }} %</strong
+            ><br />
+            {{ errorMsg }}
+          </div>
+          <div *ngIf="uzpildymoLygis === 0">
+            Įveskite duomenis ir paspauskite skaičiuoti
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
