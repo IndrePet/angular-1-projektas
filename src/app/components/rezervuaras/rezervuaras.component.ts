@@ -23,6 +23,7 @@ export class RezervuarasComponent implements OnInit {
       this.uzpildymoLygis = Number(
         (((this.greitis * this.laikas) / this.talpa) * 100).toFixed(2)
       );
+      if (this.uzpildymoLygis <= 80) this.errorMsg = 'Talpoje vietos pakanka.';
       if (this.uzpildymoLygis > 80 && this.uzpildymoLygis < 100)
         this.errorMsg = 'Rezervuaro talpa kritiškai pripildyta.';
       if (this.uzpildymoLygis >= 100) this.errorMsg = 'Talpa yra perpildyta!!!';
